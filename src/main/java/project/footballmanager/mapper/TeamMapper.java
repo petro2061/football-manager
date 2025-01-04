@@ -3,6 +3,7 @@ package project.footballmanager.mapper;
 import java.util.Optional;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 import project.footballmanager.config.MapperConfig;
 import project.footballmanager.dto.team.CreateTeamRequestDto;
@@ -17,6 +18,10 @@ public interface TeamMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "accountBalance", ignore = true)
     Team toTeamModel(CreateTeamRequestDto teamRequestDto);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "accountBalance", ignore = true)
+    void updateTeamModel(CreateTeamRequestDto updateTeamRequestDto, @MappingTarget Team team);
 
     @Named("getTeamById")
     default Team getTeamById(Long id) {
