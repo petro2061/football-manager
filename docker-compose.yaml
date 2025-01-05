@@ -5,11 +5,13 @@ services:
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     environment:
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
       - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
       - SERVER_PORT=${SERVER_PORT}
     depends_on:
       - db
+    entrypoint: ["sh", "-c", "while ! nc -z db 3306; do sleep 1; done; java -jar app.jar"]
     networks:
       - app-network
 
