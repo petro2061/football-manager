@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-players-table
+      author: petro_feniak
+      changes:
+        - createTable:
+            tableName: players
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_players
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: experience_months
+                  type: int
+                  constraints:
+                    nullable: true
+              - column:
+                  name: team_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: players
+            baseColumnNames: team_id
+            referencedTableName: teams
+            referencedColumnNames: id
+            constraintName: fk_players_team
