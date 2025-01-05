@@ -75,7 +75,7 @@ src/main/java
    ```
 
 ## Postman Collection
-Import the Postman collection to quickly test the API. [Download Postman Collection](https://www.postman.com/maintenance-physicist-78577540/workspace/fotball-manager/collection/36281725-6914d51d-1a15-435e-8a00-b6f03dbcbf5c?action=share&creator=36281725)
+Postman collection, for quickly testing APIs -> [Postman Collection](https://www.postman.com/maintenance-physicist-78577540/workspace/fotball-manager/collection/36281725-6914d51d-1a15-435e-8a00-b6f03dbcbf5c?action=share&creator=36281725)
 
 ## Development Notes
 - Ensure Docker is running before starting the application.
