@@ -1,6 +1,7 @@
 package project.footballmanager.service.player.impl;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public List<PlayerDto> findAll() {
-        return playerRepository.findAll()
+        return playerRepository.findPlayerWithTeam()
                 .stream()
                 .map(playerMapper::toPlayerDto)
                 .toList();
@@ -33,14 +34,15 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public PlayerDto findById(Long id) {
-        Player player = playerRepository.findById(id).orElseThrow(() ->
+        Player player = playerRepository.findPlayerWithTeamById(id).orElseThrow(() ->
                 new EntityNotFoundException("Can not find entity by id: " + id));
         return playerMapper.toPlayerDto(player);
     }
 
+    @Transactional
     @Override
     public PlayerDto update(Long id, CreatePlayerRequestDto updatePlayerRequestDto) {
-        Player player = playerRepository.findById(id).orElseThrow(() ->
+        Player player = playerRepository.findPlayerWithTeamById(id).orElseThrow(() ->
                 new EntityNotFoundException("Can not find entity by id: " + id));
         playerMapper.updatePlayerModel(updatePlayerRequestDto, player);
         return playerMapper.toPlayerDto(playerRepository.save(player));
