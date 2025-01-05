@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-teams
+      author: petro_feniak
+      changes:
+        - insert:
+            tableName: teams
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: "Team Alpha"
+              - column:
+                  name: account_balance
+                  valueNumeric: 100000.00
+              - column:
+                  name: commission_percentage
+                  valueNumeric: 10.0
+        - insert:
+            tableName: teams
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "Team Beta"
+              - column:
+                  name: account_balance
+                  valueNumeric: 120000.00
+              - column:
+                  name: commission_percentage
+                  valueNumeric: 5.0

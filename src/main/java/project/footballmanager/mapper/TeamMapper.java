@@ -12,15 +12,12 @@ import project.footballmanager.model.Team;
 
 @Mapper(config = MapperConfig.class)
 public interface TeamMapper {
-
     TeamDto toTeamDto(Team team);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "accountBalance", ignore = true)
     Team toTeamModel(CreateTeamRequestDto teamRequestDto);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "accountBalance", ignore = true)
     void updateTeamModel(CreateTeamRequestDto updateTeamRequestDto, @MappingTarget Team team);
 
     @Named("getTeamById")

@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-teams-table
+      author: petro_feniak
+      changes:
+        - createTable:
+            tableName: teams
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_teams
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: account_balance
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: commission_percentage
+                  type: double
+                  constraints:
+                    nullable: false
