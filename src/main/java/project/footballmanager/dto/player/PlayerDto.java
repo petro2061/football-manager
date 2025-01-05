@@ -1,7 +1,6 @@
 package project.footballmanager.dto.player;
 
 import lombok.Data;
-import project.footballmanager.model.Team;
 
 @Data
 public class PlayerDto {
@@ -9,5 +8,5 @@ public class PlayerDto {
     private String name;
     private int age;
     private int experienceMonths;
-    private Team team;
+    private Long teamId;
 }
