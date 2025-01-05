@@ -10,6 +10,7 @@ import project.footballmanager.model.Player;
 
 @Mapper(config = MapperConfig.class, uses = TeamMapper.class)
 public interface PlayerMapper {
+    @Mapping(target = "teamId", source = "player.team.id")
     PlayerDto toPlayerDto(Player player);
 
     @Mapping(target = "id", ignore = true)
